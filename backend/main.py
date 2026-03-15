@@ -27,7 +27,12 @@ except Exception as e:
 
 @app.get("/api/test")
 def test_api():
-    return {"status": "ok", "message": "API is working"}
+    return {
+        "status": "ok", 
+        "message": "API is working",
+        "cities_loaded": not cities_df.empty,
+        "cities_count": len(cities_df) if not cities_df.empty else 0
+    }
 
 @app.get("/api")
 def read_api_root():

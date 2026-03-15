@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "outputDirectory": "frontend/dist",
   "builds": [
     {
       "src": "api/index.py",
@@ -24,8 +23,12 @@
       "dest": "/api/index.py"
     },
     {
+      "src": "/(.*\\..*)",
+      "dest": "/frontend/dist/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/dist/index.html"
     }
   ]
 }
