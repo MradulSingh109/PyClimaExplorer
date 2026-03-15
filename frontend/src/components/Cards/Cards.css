@@ -1,0 +1,223 @@
+.cards-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let user click through the empty spaces to the globe if needed */
+  z-index: 10;
+}
+
+.climate-card {
+  position: absolute;
+  width: 250px;
+  background: rgba(10, 15, 25, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.2rem;
+  color: white;
+  pointer-events: auto; /* Re-enable clicks on the cards themselves */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.climate-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 255, 204, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 20;
+}
+
+/* Placement around the globe. */
+
+.top-left {
+  top: 10%;
+  left: 5%;
+}
+
+.mid-left {
+  top: 45%;
+  left: 6%;
+}
+
+.bot-left {
+  top: 75%;
+  left: 10%;
+}
+
+.top-right {
+  top: 15%;
+  right: 5%;
+}
+
+.mid-right {
+  top: 45%;
+  right: 6%;
+}
+
+.bot-right {
+  top: 75%;
+  right: 10%;
+}
+
+/* Dotted Lines towards the globe */
+.climate-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background-image: linear-gradient(90deg, rgba(243, 7, 7, 0.6) 50%, transparent 50%);
+  background-size: 8px 2px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Match the yellow badge color for Sea Level and Extreme Rain lines */
+.climate-card.mid-left::before,
+.climate-card.bot-left::before {
+  background-image: linear-gradient(90deg, rgba(255, 215, 0, 0.6) 50%, transparent 50%);
+}
+
+/* Left side cards attach to the right edge and point towards center right */
+.top-left::before {
+  left: 100%;
+  width: 10vw;
+  transform-origin: left center;
+  transform: rotate(25deg);
+}
+
+.mid-left::before {
+  left: 100%;
+  width: 4.7vw;
+}
+
+.bot-left::before {
+  left: 100%;
+  width: 7.3vw;
+  transform-origin: left center;
+  transform: rotate(-25deg);
+}
+
+/* Right side cards attach to the left edge and point towards center left */
+.top-right::before {
+  right: 100%;
+  width: 8.7vw;
+  transform-origin: right center;
+  transform: rotate(-25deg);
+}
+
+.mid-right::before {
+  right: 100%;
+  width: 4.7vw;
+}
+
+.bot-right::before {
+  right: 100%;
+  width: 7.5vw;
+  transform-origin: right center;
+  transform: rotate(25deg);
+}
+
+/* Card Internal Typography & Layout */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.card-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: #f3f4f6;
+}
+
+.card-metrics {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: inherit;
+  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-sub {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 0.8rem;
+  color: #d1d5db;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Very simple responsive breakpoints */
+@media (max-width: 1200px) {
+  .climate-card {
+    width: 280px;
+    padding: 1.25rem;
+  }
+}
+@media (max-width: 900px) {
+  .climate-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin: 1rem;
+    width: 100%;
+    max-width: 350px;
+  }
+  .climate-card::before {
+    display: none;
+  }
+  .cards-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 100vh; /* Push below Earth on mobile */
+  }
+}

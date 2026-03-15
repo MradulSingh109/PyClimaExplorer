@@ -1,0 +1,214 @@
+.news-section {
+  width: 100%;
+  padding: 6rem 2rem;
+  padding-top: 2rem;
+  background-color: transparent;
+  color: white;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.news-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.news-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f7f8f8 0%, #faf9fb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.news-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  margin-bottom: 3rem;
+}
+
+.news-search-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+}
+
+.news-search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.news-search-input:focus {
+  border-color: #f8f6f9;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(170, 59, 255, 0.3);
+}
+
+.news-search-btn {
+  padding: 0 2rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(90deg, #fefdfd 0%, #fafafc 100%);
+  color: rgb(0, 0, 0);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* .news-search-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(170, 59, 255, 0.4);
+} */
+
+.news-search-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.news-error, .news-empty {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: #ffca28;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(20, 20, 25, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 204, 0.1);
+}
+
+.news-image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image {
+  transform: scale(1.05);
+}
+
+.news-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.news-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-source {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #00ffcc;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.news-article-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.news-article-desc {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.news-read-more {
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.news-card:hover .news-read-more {
+  color: #00ffcc;
+}
+
+@media (max-width: 768px) {
+  .news-search-form {
+    flex-direction: column;
+  }
+  .news-search-btn {
+    padding: 1rem;
+  }
+  .news-title {
+    font-size: 2.2rem;
+  }
+}

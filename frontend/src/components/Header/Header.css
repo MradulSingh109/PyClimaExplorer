@@ -9,9 +9,16 @@
   padding: 1.5rem 3rem;
   box-sizing: border-box;
   z-index: 1000;
-  background: transparent;
-  font-family: system-ui, -apple-system, sans-serif;
-  transition: all 0.3s ease;
+  background-color: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Outfit', sans-serif;
+  transition: transform 0.4s cubic-bezier(0.3, 0, 0.2, 1), background 0.3s ease;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
 }
 
 .header-logo {
@@ -38,7 +45,7 @@
 .header-links {
   list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 5rem;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -79,12 +86,6 @@
   color: #fff;
   border-radius: 50px;
   /* box-shadow: 0 4px 15px rgba(170, 59, 255, 0.3); */
-}
-
-.connect-btn:hover {
-  /* transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(170, 59, 255, 0.5);
-  background: linear-gradient(90deg, #b854ff 0%, #9a42f5 100%); */
 }
 
 @media (max-width: 768px) {

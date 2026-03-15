@@ -1,0 +1,216 @@
+.timeline-section {
+  width: 100%;
+  padding: 8rem 0;
+  padding-top: 0;
+  background-color: black;
+  color: white;
+  min-height: 200vh;
+  /* Ensure plenty of scrolling space */
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Base Titles */
+.timeline-main-title {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-main-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #a1a1aa;
+  margin-bottom: 8rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Sticky UI Container (Holds Ghost Year & Thermometer) */
+.sticky-ui {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0;
+  /* 0 height to prevent blocking layout */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Giant Blurred Ghost Year fading in the background */
+.ghost-year {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  user-select: none;
+  line-height: 1;
+  font-family: inherit;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: blur(4px);
+}
+
+
+/* Main Tracking Container */
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 2rem;
+}
+
+/* The Central Track */
+.timeline-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  z-index: 5;
+}
+
+.timeline-line-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Height is animated via GSAP */
+  background: linear-gradient(180deg, #3B82F6 0%, #fbbf24 50%, #b91c1c 100%);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+/* Timeline Wrappers */
+.timeline-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12rem;
+  z-index: 10;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The glowing dot on the center track */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  /* Align with header of the card */
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid #050505;
+  /* Black border to punch out the track */
+  z-index: 6;
+}
+
+/* Card Content Blocks */
+.timeline-content {
+  width: 42%;
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  will-change: transform, opacity;
+}
+
+/* Push left side contents to left, right to right */
+.timeline-item.left {
+  justify-content: flex-start;
+}
+
+.timeline-item.right {
+  justify-content: flex-end;
+}
+
+/* Content Typography */
+.timeline-year-label {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.timeline-desc {
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Timeline Images */
+.timeline-image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.timeline-item:hover .timeline-image {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .timeline-track {
+    left: 30px;
+  }
+
+  .timeline-dot {
+    left: 30px;
+  }
+
+  .timeline-content {
+    width: calc(100% - 60px);
+    padding: 1.5rem;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    justify-content: flex-end;
+    /* All stack to the right of the left-oriented spine */
+  }
+
+  .ghost-year {
+    font-size: 50vw;
+    /* Make ghost year bigger since its narrow screen */
+  }
+}
