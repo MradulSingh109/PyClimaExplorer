@@ -22,8 +22,8 @@ const ChartsSection = ({ onSearch }) => {
     }
 
     try {
-      // Point this to the FastAPI backend running on port 8000
-      const response = await fetch(`http://localhost:8000/api/climate/${city}`);
+      // Point this to the FastAPI backend
+      const response = await fetch(`/api/climate/${city}`);
       
       if (!response.ok) {
         if (response.status === 404) {
