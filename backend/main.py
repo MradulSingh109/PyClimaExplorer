@@ -21,7 +21,16 @@ except Exception as e:
     cities_df = pd.DataFrame()
     print("Warning: Could not load cities.csv", e)
 
+@app.get("/")
+def read_root():
+    return {"status": "ok", "message": "FastAPI is running directly!"}
+
+@app.get("/api")
+def read_api_root():
+    return {"status": "ok", "message": "FastAPI is running at /api!"}
+
 @app.get("/api/climate/{city}")
+@app.get("/climate/{city}")
 def get_climate_data(city: str):
     if cities_df.empty:
         raise HTTPException(status_code=500, detail="Cities dataset not available.")
