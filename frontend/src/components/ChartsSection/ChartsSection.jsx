@@ -8,6 +8,8 @@ const ChartsSection = ({ onSearch }) => {
   const [charts, setCharts] = useState([]);
   const [locationName, setLocationName] = useState(null);
 
+  const API = import.meta.env.VITE_API_URL || '/api';
+
   const fetchCharts = async (e) => {
     e.preventDefault();
     if (!city.trim()) return;
@@ -23,7 +25,7 @@ const ChartsSection = ({ onSearch }) => {
 
     try {
       // Point this to the FastAPI backend
-      const response = await fetch(`/api/climate/${city}`);
+      const response = await fetch(`${API}/climate/${city}`);
       
       if (!response.ok) {
         if (response.status === 404) {

@@ -9,7 +9,11 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",          # local dev
+        "https://pyclimaexplorer.vercel.app",    # your Vercel URL
+        "*"                               # or allow all during hackathon
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
