@@ -37,8 +37,8 @@ function App() {
       
       <div className="hero-section" id="home">
         
-        {/* Background Video */}
-        <div className="video-container">
+        {/* Background Video - Removed due to file size limits */}
+        {/* <div className="video-container">
           <video 
             autoPlay 
             loop 
@@ -49,7 +49,7 @@ function App() {
             <source src="/BlackMarble_2016_rotate_2160p.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
 
         <ClimateCards />
       </div>

@@ -25,9 +25,9 @@ except Exception as e:
     cities_df = pd.DataFrame()
     print("Warning: Could not load cities.csv", e)
 
-@app.get("/")
-def read_root():
-    return {"status": "ok", "message": "FastAPI is running directly!"}
+@app.get("/api/test")
+def test_api():
+    return {"status": "ok", "message": "API is working"}
 
 @app.get("/api")
 def read_api_root():
